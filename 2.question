@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form with Basic Validation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="number"],
+    select,
+    input[type="date"],
+    input[type="color"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 5px;
+    }
+
+    select {
+      height: 34px;
+    }
+
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .error {
+      color: red;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Form with Basic Validation</h1>
+
+  <form id="myForm" onsubmit="validateForm(event)">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+    </div>
+
+    <div>
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" required>
+    </div>
+
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" required>
+    </div>
+
+    <div>
+      <label for="age">Age:</label>
+      <input type="number" id="age" required>
+    </div>
+
+    <div>
+      <label for="gender">Gender:</label>
+      <select id="gender" required>
+        <option value="">Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="date">Date:</label>
+      <input type="date" id="date" required>
+    </div>
+
+    <div>
+      <label for="color">Favorite Color:</label>
+      <input type="color" id="color" required>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function validateForm(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const password = document.getElementById('password').value;
+      const age = document.getElementById('age').value;
+      const gender = document.getElementById('gender').value;
+      const date = document.getElementById('date').value;
+      const color = document.getElementById('color').value;
+
+      const errorMessages = [];
+
+      if (name.trim() === '') {
+        errorMessages.push('Please enter your name.');
+      }
+
+      if (email.trim() === '') {
+        errorMessages.push('Please enter your email.');
+      } else if (!isValidEmail(email)) {
+        errorMessages.push('Please enter a valid email address.');
+      }
+
+      if (phone.trim() === '') {
+        errorMessages.push('Please enter your phone number.');
+      } else if (!isValidPhoneNumber(phone)) {
+        errorMessages.push('Please enter a valid phone number.');
+      }
+
+      if (password.trim() === '') {
+        errorMessages.push('Please enter your password.');
+      }
+
+      if (age.trim() === '' || isNaN(age)) {
+        errorMessages.push('Please enter a valid age.');
+      }
+
+      if (gender === '') {
+        errorMessages.push('Please select your gender.');
+      }
+
+      if (date.trim() === '') {
+        errorMessages.push('Please select a date.');
+      }
+
+      if (color.trim() === '') {
+        errorMessages.push('Please select a color.');
+      }
+
+      const errorContainer = document.getElementById('errorContainer');
+      if (errorMessages.length > 0) {
+        errorContainer.innerHTML = errorMessages.join('<br>');
+      } else {
+        errorContainer.innerHTML = '';
+        // Form is valid, you can proceed with submitting the data
+        alert('Form submitted successfully!');
+        document.getElementById('myForm').reset();
+      }
+    }
+
+    function isValidEmail(email) {
+      // Basic email validation using a regular expression
+      const emailPattern = /^\S+@\S+\.\S+$/;
+      return emailPattern.test(email);
+    }
+
+    function isValidPhoneNumber(phone) {
+      // Basic phone number validation using a regular expression
+      const phonePattern = /^\d{10}$/;
+      return phonePattern.test(phone);
+    }
+  </script>
+</body>
+</html>
