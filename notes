@@ -1,0 +1,25 @@
+1.Static Position:
+
+The default position for all HTML elements.
+Elements are displayed in the normal document flow.
+Not affected by the top, bottom, left, or right properties.
+
+2.Fixed Position:
+
+Positioned relative to the browser window.
+The element stays fixed even when the page is scrolled.
+
+3.Sticky Position:
+
+Behaves like relative until a specified threshold is reached, then becomes fixed.
+Stays within the normal document flow until the scroll reaches its defined position.
+
+4.Relative Position:
+
+Positioned relative to its normal position.
+Can be shifted using the top, bottom, left, or right properties
+
+5.Absolute Position:
+
+Positioned relative to the nearest positioned ancestor (or the document if no ancestor is positioned).
+Does not affect the position of surrounding elements.
