@@ -1,0 +1,77 @@
+
+//Static Position:
+<style>
+  .box {
+    position: static;
+  }
+</style>
+
+<div class="box">
+  This is a static positioned box.
+</div>
+
+
+
+
+//Fixed position:
+<style>
+  .box {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
+</style>
+
+<div class="box">
+  This is a fixed positioned box.
+</div>
+
+
+
+//Sticky Position:
+<style>
+  .box {
+    position: sticky;
+    top: 100px;
+  }
+</style>
+
+<div class="box">
+  This is a sticky positioned box.
+</div>
+
+
+//Relative Position:
+<style>
+  .box {
+    position: relative;
+    left: 50px;
+  }
+</style>
+
+<div class="box">
+  This is a relatively positioned box.
+</div>
+
+
+
+//Absolute Position:
+<style>
+  .box-container {
+    position: relative;
+    height: 200px;
+  }
+  
+  .box {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+  }
+</style>
+
+<div class="box-container">
+  <div class="box">
+    This is an absolutely positioned box.
+  </div>
+</div>
+
